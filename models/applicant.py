@@ -1,3 +1,9 @@
+from models.basemodel import BaseModel
+from peewee import *
+from models.school import School
+from models.interviewslot import InterviewSlot
+
+
 class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()

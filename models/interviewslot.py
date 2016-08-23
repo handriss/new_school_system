@@ -1,3 +1,9 @@
+from models.basemodel import BaseModel
+from peewee import *
+from models.school import School
+from models.mentor import Mentor
+
+
 class InterviewSlot(BaseModel):
     start = DateTimeField()
     end = DateTimeField()
