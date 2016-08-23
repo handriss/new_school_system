@@ -1,3 +1,4 @@
+from models.basemodel import *
 from models import *
 from datetime import *
 from random import randint
@@ -46,20 +47,20 @@ class Populator():
         ]
 
         interview_slots = [
-            {"start": datetime(2016, 8, 15, 10, 0), "end": datetime(2016, 8, 15, 11, 0), "mentor": 1, "school_id": 1},
-            {"start": datetime(2016, 8, 15, 13, 0), "end": datetime(2016, 8, 15, 14, 0), "mentor": 2, "school_id": 1},
-            {"start": datetime(2016, 8, 15, 15, 0), "end": datetime(2016, 8, 15, 16, 0), "mentor": 1, "school_id": 1},
-            {"start": datetime(2016, 8, 16, 10, 0), "end": datetime(2016, 8, 16, 11, 0), "mentor": 2, "school_id": 1},
-            {"start": datetime(2016, 8, 16, 13, 0), "end": datetime(2016, 8, 16, 14, 0), "mentor": 1, "school_id": 1},
-            {"start": datetime(2016, 8, 16, 15, 0), "end": datetime(2016, 8, 16, 16, 0), "mentor": 2, "school_id": 1},
-            {"start": datetime(2016, 8, 16, 15, 0), "end": datetime(2016, 8, 16, 16, 0), "mentor": 1, "school_id": 1},
-            {"start": datetime(2016, 8, 17, 10, 0), "end": datetime(2016, 8, 17, 11, 0), "mentor": 3, "school_id": 2},
-            {"start": datetime(2016, 8, 17, 13, 0), "end": datetime(2016, 8, 17, 14, 0), "mentor": 4, "school_id": 2},
-            {"start": datetime(2016, 8, 17, 15, 0), "end": datetime(2016, 8, 17, 16, 0), "mentor": 3, "school_id": 2},
-            {"start": datetime(2016, 8, 18, 10, 0), "end": datetime(2016, 8, 18, 11, 0), "mentor": 4, "school_id": 2},
-            {"start": datetime(2016, 8, 18, 13, 0), "end": datetime(2016, 8, 18, 14, 0), "mentor": 3, "school_id": 2},
-            {"start": datetime(2016, 8, 19, 10, 0), "end": datetime(2016, 8, 19, 11, 0), "mentor": 4, "school_id": 2},
-            {"start": datetime(2016, 8, 19, 13, 0), "end": datetime(2016, 8, 19, 14, 0), "mentor": 3, "school_id": 2}
+            {"start": datetime(2016, 8, 15, 10, 0), "end": datetime(2016, 8, 15, 11, 0), "mentor_one": 1, "school": 1},
+            {"start": datetime(2016, 8, 15, 13, 0), "end": datetime(2016, 8, 15, 14, 0), "mentor_one": 2, "school": 1},
+            {"start": datetime(2016, 8, 15, 15, 0), "end": datetime(2016, 8, 15, 16, 0), "mentor_one": 1, "school": 1},
+            {"start": datetime(2016, 8, 16, 10, 0), "end": datetime(2016, 8, 16, 11, 0), "mentor_one": 2, "school": 1},
+            {"start": datetime(2016, 8, 16, 13, 0), "end": datetime(2016, 8, 16, 14, 0), "mentor_one": 1, "school": 1},
+            {"start": datetime(2016, 8, 16, 15, 0), "end": datetime(2016, 8, 16, 16, 0), "mentor_one": 2, "school": 1},
+            {"start": datetime(2016, 8, 16, 15, 0), "end": datetime(2016, 8, 16, 16, 0), "mentor_one": 1, "school": 1},
+            {"start": datetime(2016, 8, 17, 10, 0), "end": datetime(2016, 8, 17, 11, 0), "mentor_one": 3, "school": 2},
+            {"start": datetime(2016, 8, 17, 13, 0), "end": datetime(2016, 8, 17, 14, 0), "mentor_one": 4, "school": 2},
+            {"start": datetime(2016, 8, 17, 15, 0), "end": datetime(2016, 8, 17, 16, 0), "mentor_one": 3, "school": 2},
+            {"start": datetime(2016, 8, 18, 10, 0), "end": datetime(2016, 8, 18, 11, 0), "mentor_one": 4, "school": 2},
+            {"start": datetime(2016, 8, 18, 13, 0), "end": datetime(2016, 8, 18, 14, 0), "mentor_one": 3, "school": 2},
+            {"start": datetime(2016, 8, 19, 10, 0), "end": datetime(2016, 8, 19, 11, 0), "mentor_one": 4, "school": 2},
+            {"start": datetime(2016, 8, 19, 13, 0), "end": datetime(2016, 8, 19, 14, 0), "mentor_one": 3, "school": 2}
 
         ]
 
