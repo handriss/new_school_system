@@ -1,3 +1,8 @@
+from models.basemodel import BaseModel
+from peewee import *
+from models.applicant import Applicant
+
+
 class Question(BaseModel):
     content = CharField()
     status = CharField(default="New")
