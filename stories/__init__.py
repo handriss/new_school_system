@@ -1,4 +1,14 @@
-from os.path import dirname, basename, isfile
-import glob
-modules = glob.glob(dirname(__file__)+"/*.py")
-__all__ = [ basename(f)[:-3] for f in modules if isfile(f)]
+from stories.first import *
+from stories.second import *
+from stories.third import *
+from stories.fourth import *
+from stories.fifth import *
+from stories.sixth import *
+from stories.seventh import *
+from stories.eight import *
+from stories.ninth import *
+from stories.tenth import *
+from stories.eleventh import *
+from stories.twelfth import *
+from stories.thirteenth import *
+from stories.fourteenth import *
