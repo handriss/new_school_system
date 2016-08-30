@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List apllicants</title>
+</head>
+<body>
+<h1>These are our applicants:</h1>
+
+<table>
+      <caption><h2>User Story Manager - List of User Stories</h2></caption>
+      <thead>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>trying</th>
+      </thead>
+
+      <tbody>
+        {% for line in query %}
+                <tr>
+                  <td>{{line['first_name']}}</td>
+                  <td>{{line['last_name']}}</td>
+                  <td>fokk</td>
+                </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</body>
+</html>

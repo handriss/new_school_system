@@ -13,3 +13,10 @@ class Applicant(BaseModel):
     status = CharField(default='New applicant')
     school = ForeignKeyField(School, related_name='applicant', null=True)
     interviewslot = ForeignKeyField(InterviewSlot, null=True, related_name='applicants')
+
+    def new_applicant(self, dictionary):
+        with db.atomic():
+            Applicant.insert_many(dictionary).execute()
+
+    def all_applicant(self):
+        return Applicant.select(Applicant.first_name, Applicant.last_name)
