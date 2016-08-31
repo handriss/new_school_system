@@ -12,7 +12,11 @@
       <thead>
         <th>First name</th>
         <th>Last name</th>
-        <th>trying</th>
+        <th>email</th>
+        <th>city</th>
+        <th>application_code</th>
+        <th>status</th>
+        <th>school</th>
       </thead>
 
       <tbody>
@@ -20,7 +24,12 @@
                 <tr>
                   <td>{{line['first_name']}}</td>
                   <td>{{line['last_name']}}</td>
-                  <td>fokk</td>
+                    <td>{{line['email']}}</td>
+                    <td>{{line['city']}}</td>
+                    <td>{{line['application_code']}}</td>
+                    <td>{{line['status']}}</td>
+                    <td>{{line['School.city']}}</td>
+                  <td></td>
                 </tr>
         {% endfor %}
     </tbody>

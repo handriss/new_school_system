@@ -4,6 +4,7 @@ from models.school import School
 from models.interviewslot import InterviewSlot
 
 
+
 class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
@@ -14,9 +15,14 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, related_name='applicant', null=True)
     interviewslot = ForeignKeyField(InterviewSlot, null=True, related_name='applicants')
 
-    def new_applicant(self, dictionary):
-        with db.atomic():
-            Applicant.insert_many(dictionary).execute()
+    @classmethod
+    def new_applicant(cls, dictionary):
+        cls.create(**dictionary)
 
-    def all_applicant(self):
-        return Applicant.select(Applicant.first_name, Applicant.last_name)
+    @classmethod
+    def all_applicant(cls):
+        query = cls.select(cls.first_name, cls.last_name, cls.email, cls.city, cls.application_code
+                                , cls.status, School.city).join(School, JOIN.LEFT_OUTER)
+        return query
+
+
