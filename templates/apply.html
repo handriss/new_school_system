@@ -5,19 +5,20 @@
 </head>
 <body>
 
-    <form action="demo_form.asp">
-      First name:<br> <input type="text" name="First name"><br>
+    <form action="/save" method="post">
+      First name:<br> <input type="text" name="first_name"><br>
 
-      Last name:<br> <input type="text" name="Last name"> </textarea><br>
+      Last name:<br> <input type="text" name="last_name"><br>
 
-      Email: <br><input type="text" name="Email"><br>
+      Email: <br><input type="text" name="email"><br>
 
-      City: <br> <input type="text" name="City" min="100" max="1500" step="100" ><br>
+      City: <br> <input type="text" name="city"><br>
 
-    </select>
+      <input type="submit" value="Submit">
+
     </form>
 
-  <button id="save" type="submit">Create Applicant</button>
+
 
 </body>
 </html>
