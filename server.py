@@ -20,6 +20,9 @@ def post():
     Applicant.new_applicant(new_applicant)
     return redirect('/list')
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/list', methods=['GET'])
 def send():
