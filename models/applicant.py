@@ -29,3 +29,13 @@ class Applicant(BaseModel):
         while application_code in cls.application_codes:
             application_code = (''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(6)))
         return application_code
+
+    @classmethod
+    def new_applicant(cls, dictionary):
+        cls.create(**dictionary)
+
+    @classmethod
+    def all_applicant(cls):
+        query = cls.select(cls.first_name, cls.last_name, cls.email, cls.city, cls.application_code,
+                           cls.status, School.city).join(School, JOIN.LEFT_OUTER)
+        return query
