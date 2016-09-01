@@ -21,7 +21,7 @@ def post():
     new_applicant['last_name'] = request.form['last_name']
     new_applicant['email'] = request.form['email']
     new_applicant['city'] = request.form['city']
-    new_applicant['application_code'] = code
+    new_applicant['code'] = code
     Applicant.new_applicant(new_applicant)
 
     return render_template('confirm_page.html', new_applicant=new_applicant)
