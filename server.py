@@ -11,29 +11,25 @@ def apply():
     return render_template('apply.html')
 
 
-@app.route('/save', methods=['POST'])
+@app.route('/confirm_page', methods=['POST'])
 def post():
-    print('ghjk')
     new_applicant = {}
     # new_applicant.append(request.form['first_name'])
+    Applicant.get_application_codes()
+    code = Applicant.application_code_generator()
     new_applicant['first_name'] = request.form['first_name']
     new_applicant['last_name'] = request.form['last_name']
     new_applicant['email'] = request.form['email']
     new_applicant['city'] = request.form['city']
+    new_applicant['application_code'] = code
     Applicant.new_applicant(new_applicant)
-    return redirect('/list')
+
+    return render_template('confirm_page.html', new_applicant=new_applicant)
 
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
-
-@app.route('/confirm_page')
-def confirm():
-    Applicant.get_application_codes()
-    code = Applicant.application_code_generator()
-    return render_template('confirm_page.html', code=code)
 
 
 @app.route('/list', methods=['GET'])
@@ -45,4 +41,4 @@ def send():
 if __name__ == "__main__":
     Populator.establish_connection()
     Populator.populate_tables()
-    app.run()
+    app.run(port=5001)
