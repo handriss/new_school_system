@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> User story manager </title>
+    <link rel="stylesheet" href="../static/css/table.css">
+</head>
+
+    <div id="input_field">
+    <form action="/filtered_list" method="post">
+              filter by
+                <select name = 'filter_by'>
+                    <option value="status">Status</option>
+                    <option value="city">Location</option>
+                    <option value="email">Email</option>
+                    <option value="school">School</option>
+                </select>
+
+                Value: <input type="text" name="value">
+              <input type="submit" value="Submit">
+    </form><br>
+
+        <FORM METHOD="LINK" ACTION="/list_menu" target="_blank">
+              <input type="submit" value="List all applicants">
+        </FORM>
+        <FORM METHOD="LINK" ACTION="/" target="_blank">
+              <input type="submit" value="Back">
+        </FORM>
+    </div>
+
+
+    <table>
+          <caption><h2>Our appicants</h2></caption>
+          <thead>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>email</th>
+                    <th>city</th>
+                    <th>application_code</th>
+                    <th>status</th>
+                    <th>school</th>
+          </thead>
+
+          <tbody>
+            {% for line in query %}
+                    <tr>
+                      <td>{{line['first_name']}}</td>
+                      <td>{{line['last_name']}}</td>
+                        <td>{{line['email']}}</td>
+                        <td>{{line['city']}}</td>
+                        <td>{{line['application_code']}}</td>
+                        <td>{{line['status']}}</td>
+                        <td>{{line['School.city']}}</td>
+                      <td></td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
