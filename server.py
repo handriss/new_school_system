@@ -51,11 +51,6 @@ def post():
     return render_template('confirm_page.html', new_applicant=new_applicant)
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-
 @app.route('/list', methods=['GET'])
 def send():
     query_to_print = Applicant.all_applicant()
@@ -63,11 +58,10 @@ def send():
     return render_template('list.html', query=query_to_print)
 
 
-# some protected url
 @app.route('/')
 @login_required
 def home():
-    return Response("Hello World!")
+    return Response(render_template('list.html'))
 
 
 # somewhere to login
@@ -76,10 +70,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        print(username)
-        print(password)
         if password == username + "_secret":
-            print("valami")
             id = username.split('user')[1]
             user = User(id)
             login_user(user)
@@ -87,16 +78,9 @@ def login():
         else:
             return abort(401)
     else:
-        return Response('''
-        <form action="" method="post">
-            <p><input type=text name=username>
-            <p><input type=password name=password>
-            <p><input type=submit value=Login>
-        </form>
-        ''')
+        return Response(render_template('index.html'))
 
 
-# somewhere to logout
 @app.route("/logout")
 @login_required
 def logout():
@@ -104,13 +88,11 @@ def logout():
     return Response('<p>Logged out</p>')
 
 
-# handle login failed
 @app.errorhandler(401)
 def page_not_found(e):
     return Response('<p>Login failed</p>')
 
 
-# callback to reload the user object
 @login_manager.user_loader
 def load_user(userid):
     return User(userid)
