@@ -1,16 +1,22 @@
+body {background-color: dimgray}
+
 div.container {
     width: 80%;
     height: 100%;
     border: 0px;
     border-radius: 15px;
-    background: #ffe1c1;
+    background: #96bcff;;
     padding: 50px;
     margin: auto;
 }
 
-dev.content {
-    height: 200px;
-    overflow: scroll
+div.content {
+    height: 500px;
+    width: 100%;
+}
+
+div.button-group {
+    height: 100%
 }
 
 footer {
@@ -23,26 +29,21 @@ footer {
 
 nav {
     float: top;
+    height: 50px;
     margin-bottom: 40px;
-    padding: 1em;
-    background-color: #503f3f;
+    padding: 0px;
+    background-color: #303c52;
 
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul a {
-    text-decoration: none;
-}
-
-article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
+input[type=submit] {
+    padding:5px 15px;
+    height: 50px;
+    background: #303c52;
+    border: solid 1px #96bcff;
+    cursor:pointer;
+    border-radius: 5px;
+    color: #f2f2f2;
 }
 
 input[type=text] {
@@ -75,18 +76,27 @@ select {
 
 table{
     width: 100%
-
 }
 
+thead, tbody { display: inline-block;
+width: auto}
+
+tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 
 th {
-    background-color: indianred;
+    background-color: #303c52;
     color: white;}
 
 tr{
     height: 50px;
     vertical-align: middle;
-    text-align: center}
+    text-align: center;
+    background-color: #fefefe;
+    }
 
-tr:hover {background-color: #f5f5f5}
+tr:hover {background-color: #cccccc}
 tr:nth-child(even) {background-color: #f2f2f2}
