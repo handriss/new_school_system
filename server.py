@@ -4,7 +4,30 @@ from populator import Populator
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 
 app = Flask('school_system')
-app.config['DEBUG'] = True
+
+# config
+app.config.update(DEBUG=True, SECRET_KEY='secret_xxx')
+
+# flask-login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+
+# silly user model
+class User(UserMixin):
+
+    def __init__(self, id):
+        self.id = id
+        self.name = "user" + str(id)
+        self.password = self.name + "_secret"
+
+    def __repr__(self):
+        return "%d/%s/%s" % (self.id, self.name, self.password)
+
+
+# create some users with ids 1 to 20
+users = [User(id) for id in range(1, 21)]
 
 
 @app.route('/apply')
