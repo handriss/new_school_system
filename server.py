@@ -1,6 +1,7 @@
 from flask import *
 from models import Applicant
 from populator import Populator
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 
 app = Flask('school_system')
 app.config['DEBUG'] = True
@@ -37,6 +38,8 @@ def send():
     query_to_print = Applicant.all_applicant()
     print(query_to_print)
     return render_template('list.html', query=query_to_print)
+
+
 
 if __name__ == "__main__":
     Populator.establish_connection()
