@@ -5,16 +5,13 @@ from flask_login import LoginManager, UserMixin, login_required, login_user, log
 
 app = Flask('school_system')
 
-# config
 app.config.update(DEBUG=True, SECRET_KEY='secret_xxx')
 
-# flask-login
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
 
-# silly user model
 class User(UserMixin):
 
     def __init__(self, id):
@@ -23,10 +20,8 @@ class User(UserMixin):
         self.password = self.name + "_secret"
 
     def __repr__(self):
-        return "%d/%s/%s" % (self.id, self.name, self.password)
+        return ("{}, {}, {}".format(self.id, self.name, self.password))
 
-
-# create some users with ids 1 to 20
 users = [User(id) for id in range(1, 21)]
 
 
@@ -38,7 +33,6 @@ def apply():
 @app.route('/confirm_page', methods=['POST'])
 def post():
     new_applicant = {}
-    # new_applicant.append(request.form['first_name'])
     Applicant.get_application_codes()
     code = Applicant.application_code_generator()
     new_applicant['first_name'] = request.form['first_name']
@@ -52,33 +46,39 @@ def post():
 
 
 @app.route('/list', methods=['GET'])
+@app.route('/', methods=['GET'])
+# @login_required
 def send():
     query_to_print = Applicant.all_applicant()
     print(query_to_print)
     return render_template('list.html', query=query_to_print)
 
 
-@app.route('/')
-@login_required
-def home():
-    return Response(render_template('list.html'))
-
-
-# somewhere to login
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/applicant/login", methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        if password == username + "_secret":
-            id = username.split('user')[1]
-            user = User(id)
+        try:
+            applicant = Applicant.get(Applicant.email == request.form['email'])
+        except:
+            return abort(401)
+
+        if applicant.application_code == request.form['application_code']:
+            print("minden ok")
+            user = User(applicant.id)
             login_user(user)
-            return redirect(request.args.get("next"))
+
+            new_applicant = {}
+            new_applicant['first_name'] = applicant.first_name
+            new_applicant['last_name'] = applicant.last_name
+            new_applicant['email'] = applicant.email
+            new_applicant['city'] = applicant.city
+            new_applicant['application_code'] = applicant.application_code
+
+            return render_template('confirm_page.html', new_applicant=new_applicant)
         else:
             return abort(401)
     else:
-        return Response(render_template('index.html'))
+        return Response(render_template('applicant_login.html'))
 
 
 @app.route("/logout")
