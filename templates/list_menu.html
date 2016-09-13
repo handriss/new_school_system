@@ -48,15 +48,15 @@
           </thead>
 
           <tbody>
-            {% for line in query %}
+            {% for applicant in query %}
                     <tr>
-                      <td>{{line['first_name']}}</td>
-                      <td>{{line['last_name']}}</td>
-                        <td>{{line['email']}}</td>
-                        <td>{{line['city']}}</td>
-                        <td>{{line['application_code']}}</td>
-                        <td>{{line['status']}}</td>
-                        <td>{{line['School.city']}}</td>
+                      <td>{{applicant.first_name}}</td>
+                      <td>{{applicant.last_name}}</td>
+                        <td>{{applicant.email}}</td>
+                        <td>{{applicant.city}}</td>
+                        <td>{{applicant.application_code}}</td>
+                        <td>{{applicant.status}}</td>
+                        <td>{{applicant.school.city}}</td>
                       <td></td>
                     </tr>
             {% endfor %}
