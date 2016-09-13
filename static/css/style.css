@@ -58,12 +58,13 @@ div.button-group {
 
 nav {
     float: top;
-    height: 100px;
-    margin-bottom: 40px;
-    margin: 0px;
+    height: 50px;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
     padding-left: 0px;
     padding-right: 0px;
-    background-color: rgba(167, 163, 126, 0);
+    background-color: rgba(167, 163, 126, 0.32);
     overflow: hidden;
     width:100%;
     min-width: 650px;
@@ -113,6 +114,7 @@ tbody td, thead th {
     width: 14%;  /* 19% is less than (100% / 5 cols) = 20% */
     float: left;
     text-align: center;
+    vertical-align: middle;
     height: 40px;
     border: solid 0px rgba(0, 47, 47, 0.32);
 }
