@@ -16,13 +16,9 @@ class User(UserMixin):
 
     def __init__(self, id):
         self.id = id
-        self.name = "user" + str(id)
-        self.password = self.name + "_secret"
 
     def __repr__(self):
-        return ("{}, {}, {}".format(self.id, self.name, self.password))
-
-users = [User(id) for id in range(1, 21)]
+        return ("Applicant id: {}".format(self.id))
 
 
 @app.route('/apply')
@@ -57,13 +53,13 @@ def send():
 @app.route("/applicant/login", methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
+        print(request.form)
         try:
             applicant = Applicant.get(Applicant.email == request.form['email'])
         except:
             return abort(401)
 
         if applicant.application_code == request.form['application_code']:
-            print("minden ok")
             user = User(applicant.id)
             login_user(user)
 
@@ -78,7 +74,7 @@ def login():
         else:
             return abort(401)
     else:
-        return Response(render_template('applicant_login.html'))
+        return Response(render_template('index.html'))
 
 
 @app.route("/logout")
