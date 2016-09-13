@@ -1,5 +1,5 @@
 from flask import *
-from models import Applicant
+from models import Applicant, Mentor
 from populator import Populator
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 
@@ -43,35 +43,41 @@ def post():
 
 @app.route('/list', methods=['GET'])
 @app.route('/', methods=['GET'])
-# @login_required
+@login_required
 def send():
     query_to_print = Applicant.all_applicant()
-    print(query_to_print)
     return render_template('list.html', query=query_to_print)
 
 
 @app.route("/applicant/login", methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
-        print(request.form)
         try:
-            applicant = Applicant.get(Applicant.email == request.form['email'])
+            if request.form['user'] == 'applicant':
+                applicant = Applicant.get(Applicant.email == request.form['email'])
+                if applicant.application_code == request.form['application_code']:
+                    user = User("applicant")
+                    login_user(user)
+
+                    new_applicant = {}
+                    new_applicant['first_name'] = applicant.first_name
+                    new_applicant['last_name'] = applicant.last_name
+                    new_applicant['email'] = applicant.email
+                    new_applicant['city'] = applicant.city
+                    new_applicant['application_code'] = applicant.application_code
+
+                    return render_template('confirm_page.html', new_applicant=new_applicant)
+            elif request.form['user'] == 'mentor':
+                mentor = Mentor.get(Mentor.email == request.form['email'])
+
+                if mentor.password == request.form['application_code']:
+                    user = User("mentor")
+                    print(user)
+                    login_user(user)
+
+                    query = Applicant.all_applicant()
+                    return render_template('list.html', query=query)
         except:
-            return abort(401)
-
-        if applicant.application_code == request.form['application_code']:
-            user = User(applicant.id)
-            login_user(user)
-
-            new_applicant = {}
-            new_applicant['first_name'] = applicant.first_name
-            new_applicant['last_name'] = applicant.last_name
-            new_applicant['email'] = applicant.email
-            new_applicant['city'] = applicant.city
-            new_applicant['application_code'] = applicant.application_code
-
-            return render_template('confirm_page.html', new_applicant=new_applicant)
-        else:
             return abort(401)
     else:
         return Response(render_template('index.html'))
