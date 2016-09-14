@@ -6,44 +6,43 @@
 </head>
 
 <body>
-
 <nav>
     <div class="button-group">
     <FORM METHOD="LINK" ACTION="/apply" target="_blank">
-        <input type="image" src="{{ url_for('static', filename='pictures/registration.png') }}" border="0" alt="Submit" style= "float: right"/>
+        <input class="button" type="submit" value="Apply" style= "float: right"/>
       </FORM>
 
     <FORM METHOD="LINK" ACTION="/list_menu" target="_blank">
-          <input type="image" src="{{ url_for('static', filename='pictures/login.png') }}" border="0" alt="Submit" style= "float: right"/>
+          <input class="button" type="submit" value="log in" style= "float: right"/>
       </FORM>
 
+
     <FORM METHOD="LINK" ACTION="/" target="_blank">
-      <input type="image" src="{{ url_for('static', filename='pictures/home.png') }}" border="0" alt="Submit" style= "float: left"/>
+      <input class="button" type="submit" value="Home" style= "float: left"/>
     </FORM>
     </div>
 </nav>
 
-<div class="container-head">
 
-    <div class="input-container">
-        <form action="/filtered_list" method="post">
-          filter by
+
+<div class="container-head">
+    <div class="input-bar">
+        <form action="/filtered_list" method="post" style="display: inline-block">
             <select name = 'filter_by' style="float: left">
                 <option value="status">Status</option>
                 <option value="city">Location</option>
                 <option value="email">Email</option>
                 <option value="school">School</option>
             </select>
-
-            Value: <input type="text" name="value" style="float: left">-->
-          <input type="submit" value="Submit">
+            <input class="textinput" type="text" name="value" style="float: left">
+            <input class="button" id="text" type="submit" value="Submit">
         </form>
 
-        <FORM METHOD="LINK" ACTION="/list_menu" target="_blank">
-              <input type="submit" value="List all applicants" style="float: right">
+        <FORM METHOD="LINK" ACTION="/list_menu" style="display: inline-block; float: right">
+              <input class="button" type="submit" value="List all applicants" style="float: right">
         </FORM>
-        <FORM METHOD="LINK" ACTION="/" target="_blank">
-              <input type="submit" value="Back" style="float: right">
+        <FORM METHOD="LINK" ACTION="/" style="display: inline-block; float: right">
+              <input class="button" type="submit" value="Back" style="float: right">
         </FORM>
     </div>
 </div>
