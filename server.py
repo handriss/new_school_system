@@ -1,6 +1,8 @@
 from flask import *
 from models import Applicant
 from populator import Populator
+from models.basemodel import *
+from peewee import *
 
 app = Flask('school_system')
 app.config['DEBUG'] = True
@@ -13,18 +15,26 @@ def apply():
 
 @app.route('/confirm_page', methods=['POST'])
 def post():
+    try:
+        with db.transaction():
 
-    Applicant.get_application_codes()
-    code = Applicant.application_code_generator()
-    Applicant.create(
-        first_name=request.form['first_name'],
-        last_name=request.form['last_name'],
-        email=request.form['email'],
-        city=request.form['city'],
-        application_code=code
-    )
-    new_applicant = Applicant.get(application_code=code)
-    return render_template('confirm_page.html', new_applicant=new_applicant)
+            Applicant.get_application_codes()
+            code = Applicant.application_code_generator()
+            Applicant.create(
+                first_name=request.form['first_name'],
+                last_name=request.form['last_name'],
+                email=request.form['email'],
+                city=request.form['city'],
+                application_code=code
+            )
+            new_applicant = Applicant.get(application_code=code)
+            return render_template('confirm_page.html', new_applicant=new_applicant)
+
+    except IntegrityError:
+        email_in_use = True
+        return render_template('apply.html', email_in_use=email_in_use)
+
+    #return render_template('confirm_page.html', new_applicant=new_applicant)
 
 
 @app.route('/')

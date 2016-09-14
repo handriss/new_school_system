@@ -6,12 +6,14 @@
 <body>
 
     <form action="/confirm_page" method="post">
-      First name:<br> <input type="text" name="first_name"><br>
+     First name:<br> <input type="text" name="first_name"><br>
 
      Last name:<br> <input type="text" name="last_name"><br>
-
-     Email: <br><input type="email" name="email"><br>
-
+    {% if email_in_use %}
+        Email: <br><input type="email" name="email"> Email already in use baby<br>
+    {% else %}
+        Email: <br><input type="email" name="email">
+    {% endif %}
      City: <br> <input type="text" name="city"><br>
 
      <input type="submit" value="Submit">
