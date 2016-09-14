@@ -56,6 +56,7 @@ def login():
             if request.form['user'] == 'applicant':
                 applicant = Applicant.get(Applicant.email == request.form['email'])
                 if applicant.application_code == request.form['application_code']:
+
                     user = User("applicant")
                     login_user(user)
 
@@ -88,6 +89,12 @@ def login():
 def logout():
     logout_user()
     return Response('<p>Logged out</p>')
+
+
+@app.route("/kk")
+@login_required
+def aa():
+    return "valami"
 
 
 @app.errorhandler(401)
