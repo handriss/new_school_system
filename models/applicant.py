@@ -1,3 +1,4 @@
+
 from models.basemodel import BaseModel
 from peewee import *
 from models.school import School

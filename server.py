@@ -27,9 +27,11 @@ def post():
     return render_template('confirm_page.html', new_applicant=new_applicant)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
+
+
 
 @app.route('/list_menu', methods=['GET'])
 def send():
