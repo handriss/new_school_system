@@ -9,10 +9,15 @@
   </head>
 
   <body>
-      <FORM METHOD="LINK" ACTION="/apply" target="_blank">
-          <input type="submit" value="Apply to Codecool">
-      </FORM>
-      <FORM METHOD="LINK" ACTION="/list_menu" target="_blank">
-          <input type="submit" value="List all applicants">
-      </FORM>
+      <form action="" method="post">
+                  <p>Email: </p><input type=text name=email>
+                  <p id="psw">Application code: </p><input type=password name=application_code>
+                  <p><input type="radio" name="user" value="applicant" id="applicant" checked> Sign in as an applicant</p>
+                  <p><input type="radio" name="user" value="mentor" id="mentor"> Sign in as a mentor</p>
+                  <p><input type=submit value=Login></p>
+              </form>
+
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/toggle.js"></script>
+
  </body>

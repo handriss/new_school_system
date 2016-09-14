@@ -102,10 +102,14 @@ class Populator():
         ]
 
         mentors = [
-            {"first_name": "Hubert", "last_name": "Farnsworth", "email": "", "school": bp},
-            {"first_name": "Morbo", "last_name": "the Annihilator", "email": "iwilldestroyyou@gmail.com", "school": bp},
-            {"first_name": "Lord", "last_name": "Nibbler", "email": "iamcute@nibblonians.niblo", "school": miskolc},
-            {"first_name": "Richard", "last_name": "Nixon", "email": "nixonalwayswins@head.gov", "school": miskolc}
+            {"first_name": "Hubert", "last_name": "Farnsworth", "email": "ceo@planetexpress.com", "school": bp,
+                "password": "admin"},
+            {"first_name": "Morbo", "last_name": "the Annihilator", "email": "iwilldestroyyou@gmail.com", "school": bp,
+                "password": "admin"},
+            {"first_name": "Lord", "last_name": "Nibbler", "email": "iamcute@nibblonians.niblo", "school": miskolc,
+                "password": "admin"},
+            {"first_name": "Richard", "last_name": "Nixon", "email": "nixonalwayswins@head.gov", "school": miskolc,
+                "password": "admin"}
         ]
 
         return cities, applicants, mentors, interview_slots, questions
