@@ -93,7 +93,7 @@ def login():
                     login_user(user)
 
                     query = Applicant.all_applicant()
-                    return render_template('list.html', query=query)
+                    return render_template('list_menu.html', query=query)
         except:
             return abort(401)
     else:

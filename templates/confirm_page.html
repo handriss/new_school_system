@@ -2,11 +2,13 @@
 <html>
 <head>
 <title> Confirmation </title>
+  <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
 
 </head>
-  <body>
+  <div>
+  <div class="datainput"
    <form action="/confirm_page" method="post">
      <b>Dear {{new_applicant['first_name']}} {{new_applicant['last_name']}}!</b>
      <p>Congratulations! Your application has been confirmed.</p>
@@ -15,7 +17,7 @@
      <p>Your hometown is {{new_applicant['city']}}</p>
      <b>Your application code is {{new_applicant['code']}}.</b>
   </form>
-
+</div>
 
 </body>
 </html>
