@@ -103,7 +103,7 @@ def login():
         except:
             return abort(401)
     else:
-        return Response(render_template('index.html'))
+        return Response(render_template('login.html'))
 
 
 @app.route("/logout")
