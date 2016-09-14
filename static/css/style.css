@@ -1,6 +1,8 @@
 html, body {height:100%;}
-
-body {background-image: url("/static/pictures/wallpaper.png"); margin: 0; overflow: hidden;}
+body {background-image: url("http://orig08.deviantart.net/8ca5/f/2012/051/6/c/basic_blue_wallpaper_1920x1080_by_blacklotusxx-d4qfovo.jpg");
+    margin: 0; overflow: hidden;
+    font-family: SansSerif;
+color: white}
 
 div.container-head {
     width: 96.3%;
@@ -49,6 +51,7 @@ div.datainput {
     margin: auto;
     margin-top: 150px;
     padding: 5%;
+    padding-top: 2%;
 }
 
 ::-webkit-scrollbar
