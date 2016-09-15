@@ -16,9 +16,9 @@ p {
     text-align: left;
     line-height: 150%;
     margin-top: 2%;
-
-
 }
+
+p.massage {margin: 50px}
 
 div.container-head {
     width: 96.3%;
@@ -50,6 +50,21 @@ div.container-body {
 
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    padding: 50px;
+    margin: auto;
+    margin-bottom: 0
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.massage {
+    width: 30%;
+    height: 50%;
+    border: 0px;
+    /*border-radius: 15px;*/
+    background: rgba(239, 236, 202, 0.31);
+
+    border-radius: 50px;
     padding: 50px;
     margin: auto;
     margin-bottom: 0

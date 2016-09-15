@@ -21,7 +21,9 @@ class User(UserMixin):
         return ("Applicant id: {}".format(self.id))
 
 
-@app.route('/apply')
+
+
+@app.route('/apply', methods=['GET'])
 def apply():
     return render_template('apply.html')
 
@@ -110,12 +112,12 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return Response('<p>Logged out</p>')
+    return Response(render_template('logout.html'))
 
 
 @app.errorhandler(401)
 def page_not_found(e):
-    return Response('<p>Login failed</p>')
+    return Response('<p>Login failed</p> <a href="/applicant/login">back</a>')
 
 
 @login_manager.user_loader
