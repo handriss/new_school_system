@@ -2,12 +2,20 @@
 <html>
 <head>
 <title> Confirmation </title>
+  <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
 
-</head>
-  <body>
-   <form action="/confirm_page" method="post">
+
+<nav>
+      <div class="button-group">
+        <a href="/applicant/login" style=" float: right" class="button">Log in</a>
+        <a href="/" style=" float: left" class="button">Home</a>
+    </div>
+  </nav>
+
+    <div class="massage"
+     <form action="/confirm_page" method="post">
      <b>Dear {{new_applicant.first_name}} {{new_applicant.last_name}}!</b>
      <p>Congratulations! Your application has been confirmed.</p>
      <p>We are going to inform you about your result in e-mail.</p>
@@ -15,7 +23,7 @@
      <p>Your hometown is {{new_applicant.city}}</p>
      <b>Your application code is {{new_applicant.application_code}}.</b>
   </form>
-
+  </div>
 
 </body>
 </html>

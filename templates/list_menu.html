@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> User story manager </title>
-    <link rel="stylesheet" href="../static/css/table.css">
+    <title> New school system </title>
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
-    <div id="input_field">
-        <div id="filter">
-            <form action="/filtered_list" method="post">
-                      filter by
-                        <select name = 'filter_by'>
-                            <option value="status">Status</option>
-                            <option value="city">Location</option>
-                            <option value="email">Email</option>
-                            <option value="school">School</option>
-                        </select>
-
-                        Value: <input type="text" name="value">
-                      <input type="submit" value="Submit">
-
-            </form><br>
-        </div>
-
-        <div id="button">
-            <div id="list">
-            <FORM METHOD="LINK" ACTION="/list_menu" target="_blank">
-                  <input type="submit" value="List all applicants">
-            </FORM>
-            </div>
-            <FORM METHOD="LINK" ACTION="/" target="_blank">
-                  <input type="submit" value="Back">
-            </FORM>
-        </div>
+<body>
+<nav>
+    <div class="button-group">
+        <!--<a href="/apply" style=" float: right" class="button">Apply</a>-->
+        <a href="/logout" style=" float: right" class="button">Log out</a>
+        <a href="/" style=" float: left" class="button">Home</a>
     </div>
+</nav>
 
 
-    <table>
-          <caption><h2>Our appicants</h2></caption>
-          <thead>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>email</th>
-                    <th>city</th>
-                    <th>application_code</th>
-                    <th>status</th>
-                    <th>school</th>
-          </thead>
 
-          <tbody>
-            {% for applicant in query %}
+<div class="container-head">
+    <div class="input-bar">
+        <form action="/filtered_list" method="post" style="display: inline-block">
+            <select name = 'filter_by' style="float: left">
+                <option value="status">Status</option>
+                <option value="city">Location</option>
+                <option value="email">Email</option>
+                <option value="school">School</option>
+            </select>
+            <input class="textinput" type="text" name="value" style="float: left">
+            <input class="button" id="text" type="submit" value="Submit">
+        </form>
+
+        <FORM METHOD="LINK" ACTION="/list_menu" style="display: inline-block; float: right">
+              <input class="button" type="submit" value="List all applicants" style="float: right">
+        </FORM>
+        <FORM METHOD="LINK" ACTION="/" style="display: inline-block; float: right">
+              <input class="button" type="submit" value="Back" style="float: right">
+        </FORM>
+    </div>
+</div>
+<div class="container-body">
+
+        <table>
+              <thead>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>email</th>
+                <th>city</th>
+                <th>application_code</th>
+                <th>status</th>
+                <th>school</th>
+              </thead>
+              <tbody>
+                {% for line in query %}
                     <tr>
-                      <td>{{applicant.first_name}}</td>
-                      <td>{{applicant.last_name}}</td>
-                        <td>{{applicant.email}}</td>
-                        <td>{{applicant.city}}</td>
-                        <td>{{applicant.application_code}}</td>
-                        <td>{{applicant.status}}</td>
-                        <td>{{applicant.school.city}}</td>
-                      <td></td>
+                      <td>{{line['first_name']}}</td>
+                      <td>{{line['last_name']}}</td>
+                        <td>{{line['email']}}</td>
+                        <td>{{line['city']}}</td>
+                        <td>{{line['application_code']}}</td>
+                        <td>{{line['status']}}</td>
+                        <td>{{line['School.city']}}</td>
                     </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% endfor %}
+            </tbody>
+        </table>
 
+</div>
 </body>
 </html>

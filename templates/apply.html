@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> User story manager </title>
+    <title> User story manager </title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
 
+<nav>
+      <div class="button-group">
+        <a href="/" style=" float: left" class="button">Home</a>
+    </div>
+  </nav>
+
+<div class="datainput">
+
     <form action="/confirm_page" method="post">
-     First name:<br> <input type="text" name="first_name"><br>
+      <br> <input type="text" placeholder="First name" name="first_name" class="textinput"><br>
 
-     Last name:<br> <input type="text" name="last_name"><br>
-    {% if email_in_use %}
-        Email: <br><input type="email" name="email"> Email already in use baby<br>
-    {% else %}
-        Email: <br><input type="email" name="email">
-    {% endif %}
-     City: <br> <input type="text" name="city"><br>
 
-     <input type="submit" value="Submit">
+     <br> <input type="text" placeholder="Last name" name="last_name" class="textinput"><br>
+        {% if email_in_use %}
+        <br><input type="email" name="email" placeholder="Email" class="textinput"><br> adress is already in use
+        {% else %}
+        <br><input type="text" name="email" placeholder="Email" class="textinput"><br>
+        {% endif %}
+     <br> <input type="text" name="city" placeholder="City" class="textinput"><br>
+
+     <input type="submit" value="Submit" class="button">
 
    </form>
-
-
-
+</div>
 </body>
 </html>
