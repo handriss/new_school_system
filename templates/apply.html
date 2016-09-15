@@ -16,19 +16,20 @@
 <div class="datainput">
 
     <form action="/confirm_page" method="post">
-      <br> <input type="text" placeholder="First name" name="first_name" class="textinput"><br>
+      <br> <input type="text" placeholder="First name" name="first_name" class="textinput" required><br>
 
-     <br> <input type="text" placeholder="Last name" name="last_name" class="textinput"><br>
 
-     <br><input type="text" name="email" placeholder="Email" class="textinput"><br>
-
-     <br> <input type="text" name="city" placeholder="City" class="textinput"><br>
+     <br> <input type="text" placeholder="Last name" name="last_name" class="textinput" required><br>
+        {% if email_in_use %}
+        <br><input type="email" name="email" placeholder="Email" class="textinput" required><br> adress is already in use
+        {% else %}
+        <br><input type="email" name="email" placeholder="Email" class="textinput" required><br>
+        {% endif %}
+     <br> <input type="text" name="city" placeholder="City" class="textinput" required><br>
 
      <input type="submit" value="Submit" class="button">
 
    </form>
 </div>
-
-
 </body>
 </html>

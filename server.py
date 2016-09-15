@@ -1,9 +1,12 @@
 from flask import *
 from models import Applicant, Mentor
 from populator import Populator
+from models.basemodel import *
+from peewee import *
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 
 app = Flask('school_system')
+app.config['DEBUG'] = True
 
 app.config.update(DEBUG=True, SECRET_KEY='secret_xxx')
 
@@ -30,24 +33,31 @@ def apply():
 
 @app.route('/confirm_page', methods=['POST'])
 def post():
-    new_applicant = {}
-    Applicant.get_application_codes()
-    code = Applicant.application_code_generator()
-    new_applicant['first_name'] = request.form['first_name']
-    new_applicant['last_name'] = request.form['last_name']
-    new_applicant['email'] = request.form['email']
-    new_applicant['city'] = request.form['city']
-    new_applicant['code'] = code
-    Applicant.new_applicant(new_applicant)
+    try:
+        with db.transaction():
 
-    return render_template('confirm_page.html', new_applicant=new_applicant)
+            Applicant.get_application_codes()
+            code = Applicant.application_code_generator()
+            Applicant.create(
+                first_name=request.form['first_name'],
+                last_name=request.form['last_name'],
+                email=request.form['email'],
+                city=request.form['city'],
+                application_code=code
+            )
+            new_applicant = Applicant.get(application_code=code)
+            return render_template('confirm_page.html', new_applicant=new_applicant)
+
+    except IntegrityError:
+        email_in_use = True
+        return render_template('apply.html', email_in_use=email_in_use)
+
+    #return render_template('confirm_page.html', new_applicant=new_applicant)
 
 
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
-
-
 
 @app.route('/list_menu', methods=['GET'])
 @login_required
@@ -82,6 +92,7 @@ def login():
                 if applicant.application_code == request.form['application_code']:
 
                     user = User("applicant")
+                    print  (user)
                     login_user(user)
 
                     new_applicant = {}
@@ -90,6 +101,7 @@ def login():
                     new_applicant['email'] = applicant.email
                     new_applicant['city'] = applicant.city
                     new_applicant['application_code'] = applicant.application_code
+                    print (new_applicant)
 
                     return render_template('confirm_page.html', new_applicant=new_applicant)
             elif request.form['user'] == 'mentor':

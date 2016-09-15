@@ -12,7 +12,7 @@ import string
 class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
-    email = CharField()
+    email = CharField(unique=True)
     city = CharField()
     application_code = CharField(null=True)
     status = CharField(default='New applicant')

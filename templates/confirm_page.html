@@ -6,6 +6,7 @@
 </head>
 <body>
 
+
 <nav>
       <div class="button-group">
         <a href="/applicant/login" style=" float: right" class="button">Log in</a>
@@ -15,13 +16,13 @@
 
     <div class="massage"
      <form action="/confirm_page" method="post">
-       <b>Dear {{new_applicant['first_name']}} {{new_applicant['last_name']}}!</b>
-       <p class="massage">Congratulations! Your application has been confirmed.
-       >We are going to inform you about your result in e-mail.
-       We've got {{new_applicant['email']}} as your address in our database, inform us if it's not correct!
-       Your hometown is {{new_applicant['city']}}</p>
-       <b>Your application code is {{new_applicant['code']}}.</b>
-    </form>
+     <b>Dear {{new_applicant.first_name}} {{new_applicant.last_name}}!</b>
+     <p>Congratulations! Your application has been confirmed.</p>
+     <p>We are going to inform you about your result in e-mail.</p>
+     <p>We've got {{new_applicant.email}} as your address in our database, inform us if it's not correct!</p>
+     <p>Your hometown is {{new_applicant.city}}</p>
+     <b>Your application code is {{new_applicant.application_code}}.</b>
+  </form>
   </div>
 
 </body>
