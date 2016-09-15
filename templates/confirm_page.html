@@ -17,10 +17,10 @@
      <form action="/confirm_page" method="post">
        <b>Dear {{new_applicant['first_name']}} {{new_applicant['last_name']}}!</b>
        <p class="massage">Congratulations! Your application has been confirmed.
-       >We are going to inform you about your result in e-mail.
+       We are going to inform you about your result in e-mail.
        We've got {{new_applicant['email']}} as your address in our database, inform us if it's not correct!
        Your hometown is {{new_applicant['city']}}</p>
-       <b>Your application code is {{new_applicant['code']}}.</b>
+       <b>Your application code is {{new_applicant['application_code']}}.</b>
     </form>
   </div>
 

@@ -82,6 +82,7 @@ def login():
                 if applicant.application_code == request.form['application_code']:
 
                     user = User("applicant")
+                    print  (user)
                     login_user(user)
 
                     new_applicant = {}
@@ -90,6 +91,7 @@ def login():
                     new_applicant['email'] = applicant.email
                     new_applicant['city'] = applicant.city
                     new_applicant['application_code'] = applicant.application_code
+                    print (new_applicant)
 
                     return render_template('confirm_page.html', new_applicant=new_applicant)
             elif request.form['user'] == 'mentor':
