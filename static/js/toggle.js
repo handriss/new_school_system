@@ -1,7 +1,7 @@
 $('#mentor').click(function(){
-     $('#psw').text('Password:')
+     $('#psw').attr("placeholder",'Password')
 })
 
 $('#applicant').click(function(){
-     $('#psw').text('Application code:')
+     $('#psw').attr('placeholder', 'Application code')
 })
